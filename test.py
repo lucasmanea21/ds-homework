@@ -1,7 +1,9 @@
 import time
-from algorithms.merge_sort import merge_sort
-from algorithms.quick_sort import quick_sort
-
+#from algorithms.merge_sort import merge_sort
+#from algorithms.quick_sort import quick_sort
+from algorithms.timSort import timSort
+from algorithms.shellSort import shellSort
+from algorithms.bucketSort import bucketSort
 test_file = "all_tests.txt"
 
 def load_tests_from_file(filename):
@@ -50,8 +52,11 @@ def benchmark_algorithms(algorithms):
 
 
 sorting_algorithms = {
-    "Merge Sort": merge_sort,
-    "Quick Sort": quick_sort,
+    "Tim Sort": timSort,
+    "Shell Sort": shellSort,
+    "Bucket Sort": bucketSort,
+    #"Merge Sort": merge_sort,
+    #"Quick Sort": quick_sort,
 }
 
 benchmark_algorithms(sorting_algorithms)
