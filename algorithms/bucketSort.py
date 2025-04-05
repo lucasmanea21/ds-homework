@@ -1,12 +1,15 @@
+from algorithms.shellSort import shellSort
+from algorithms.timSort import timSort
+
 def bucketSort(arr):
     bucket=[]
-
+    max_value = max(arr)
     for i in range(len(arr)):
         bucket.append([])
     
-    for j in arr:
-        index=int(10*j)
-        bucket[index].append(j)
+    for i in range(len(arr)):
+        index=int(len(arr)*arr[i]/(max_value+1))
+        bucket[index].append(arr[i])
     
     for i in range(len(arr)):
         bucket[i].sort() # implementat cu functia sort din Python
@@ -16,4 +19,3 @@ def bucketSort(arr):
         sortedArr.extend(bucket[i])
     
     return sortedArr
-    
