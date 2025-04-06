@@ -3,7 +3,7 @@ from algorithms.mergeSort import mergeSort
 from algorithms.quickSort import quickSort
 from algorithms.timSort import timSort
 from algorithms.shellSort import shellSort
-from algorithms.bucketSort import bucketSort
+from algorithms.bucketSort import bucketSort, bucketSort_tim, bucketSort_shell
 from algorithms.radixSort import radixSort
 
 
@@ -62,6 +62,8 @@ sorting_algorithms = {
     "Tim Sort": timSort,
     "Shell Sort": shellSort,
     "Bucket Sort": bucketSort,
+    "Bucket Sort (Tim)": bucketSort_tim,
+    "Bucket Sort (Shell)": bucketSort_shell,
     "Merge Sort": mergeSort,
 }
 
