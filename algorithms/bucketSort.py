@@ -1,5 +1,6 @@
 from algorithms.shellSort import shellSort
 from algorithms.timSort import timSort
+from algorithms.quickSort import quickSort
 
 def bucketSort(arr):
     bucket=[]
@@ -51,6 +52,25 @@ def bucketSort_shell(arr):
     
     for i in range(len(arr)):
         shellSort(bucket[i]) # implementat cu shellSort
+    
+    sortedArr=[]
+    for i in range(len(arr)):
+        sortedArr.extend(bucket[i])
+    
+    return sortedArr
+
+def bucketSort_quick(arr):
+    bucket=[]
+    max_value = max(arr)
+    for i in range(len(arr)):
+        bucket.append([])
+    
+    for i in range(len(arr)):
+        index=int(len(arr)*arr[i]/(max_value+1))
+        bucket[index].append(arr[i])
+    
+    for i in range(len(arr)):
+        arr=quickSort(bucket[i]) # implementat cu quickSort
     
     sortedArr=[]
     for i in range(len(arr)):
