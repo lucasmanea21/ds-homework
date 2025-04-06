@@ -4,6 +4,9 @@ import time
 from algorithms.timSort import timSort
 from algorithms.shellSort import shellSort
 from algorithms.bucketSort import bucketSort
+from algorithms.radixSort import radixSort
+
+
 test_file = "all_tests.txt"
 
 def load_tests_from_file(filename):
@@ -14,11 +17,12 @@ def load_tests_from_file(filename):
     T = int(lines[0].split('=')[1].strip())
     i = 1
     for _ in range(T):
-        N, MAX = map(int, lines[i].strip().split())
-        data = list(map(float, lines[i+1:i+1+N]))  # float to support real numbers
+        test_type = lines[i].strip().lstrip('#').strip()
+        N, MAX = map(int, lines[i+1].strip().split())
+        data = list(map(float, lines[i+2:i+2+N]))  # float to support real numbers
         
-        tests.append((N, MAX, data))
-        i += 1 + N
+        tests.append((test_type, N, MAX, data))
+        i += 2 + N
 
     return tests
 
@@ -28,8 +32,8 @@ def is_sorted(arr):
 def benchmark_algorithms(algorithms):
     tests = load_tests_from_file(test_file)
 
-    for idx, (N, MAX, data) in enumerate(tests, 1):
-        print(f"\n=== Test {idx}: N={N}, MAX={MAX} ===")
+    for idx, (test_type, N, MAX, data) in enumerate(tests, 1):
+        print(f"\n=== Test {idx}: {test_type} | N={N}, MAX={MAX} ===")
 
         for name, sort_fn in algorithms.items():
             arr = data.copy()
@@ -38,7 +42,7 @@ def benchmark_algorithms(algorithms):
 
                 result = sort_fn(arr)
                 if result is not None:
-                    arr = result  
+                    arr = result
 
                 end = time.time()
                 duration = end - start
@@ -55,7 +59,7 @@ sorting_algorithms = {
     "Tim Sort": timSort,
     "Shell Sort": shellSort,
     "Bucket Sort": bucketSort,
-    #"Merge Sort": merge_sort,
+    "Radix Sort": radixSort,
     #"Quick Sort": quick_sort,
 }
 
