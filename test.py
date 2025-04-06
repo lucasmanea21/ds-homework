@@ -1,6 +1,6 @@
 import time
-#from algorithms.merge_sort import merge_sort
-#from algorithms.quick_sort import quick_sort
+from algorithms.mergeSort import mergeSort
+from algorithms.quickSort import quickSort
 from algorithms.timSort import timSort
 from algorithms.shellSort import shellSort
 from algorithms.bucketSort import bucketSort
@@ -56,11 +56,13 @@ def benchmark_algorithms(algorithms):
 
 
 sorting_algorithms = {
+    "Python built-in sort": sorted,
+    "Quick Sort": quickSort,
+    "Radix Sort": radixSort,
     "Tim Sort": timSort,
     "Shell Sort": shellSort,
     "Bucket Sort": bucketSort,
-    "Radix Sort": radixSort,
-    #"Quick Sort": quick_sort,
+    "Merge Sort": mergeSort,
 }
 
 benchmark_algorithms(sorting_algorithms)

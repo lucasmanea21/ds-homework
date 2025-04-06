@@ -41,10 +41,10 @@ def write_all_tests_to_file(filename, test_cases):
 test_cases = []
 
 sizes = [1_000, 100_000, 1_000_000]
-max_val = 10**6
+max_val = 10**9
 
 for n in sizes:
-    test_cases.append((f"ints", n, max_val, generate_random_integers(n, max_val)))
+    test_cases.append((f"random ints", n, max_val, generate_random_integers(n, max_val)))
     test_cases.append(("already sorted array", n, max_val, generate_sorted(n)))
     test_cases.append(("reversed", n, max_val, generate_reversed(n)))
     test_cases.append(("almost sorted", n, max_val, generate_nearly_sorted(n, swaps=50)))
